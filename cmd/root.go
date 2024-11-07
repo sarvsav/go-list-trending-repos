@@ -34,7 +34,7 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "go-list-trending-repos",
-	Short: "A brief description of your application",
+	Short: "Give you the list of trending repositories in Go on GitHub",
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
