@@ -21,8 +21,21 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/sarvsav/go-list-trending-repos/cmd"
+import (
+	"time"
+
+	"github.com/Kei-K23/spinix"
+	"github.com/sarvsav/go-list-trending-repos/cmd"
+)
 
 func main() {
+	spinner := spinix.NewSpinner().
+		SetSpinnerColor("\033[34m").
+		SetMessage("Loading...").
+		SetMessageColor("\033[36m").
+		SetSpeed(100 * time.Millisecond) // Adjust speed if necessary
+
+	spinner.Start()
 	cmd.Execute()
+	spinner.Stop()
 }
