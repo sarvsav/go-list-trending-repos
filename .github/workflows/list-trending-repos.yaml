@@ -7,6 +7,6 @@ jobs:
     name: A job to list the trending golang repositories on GitHub
     steps:
       - name: List trending repos daily
-        id: daily
-        uses: sarvsav/go-list-trending-repos
+        id: h
+        uses: sarvsav/go-list-trending-repos@v1.0.3
 
