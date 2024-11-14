@@ -9,7 +9,7 @@ runs:
   using: 'docker'
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
   args:
-    - ${{ if inputs.version  | toLowerCase == 'true' }}:
+    - ${{ if inputs.version == true }}:
       - '-v'
 branding:
   icon: 'wifi'

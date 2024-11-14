@@ -10,5 +10,5 @@ jobs:
         id: version
         uses: sarvsav/go-list-trending-repos@eed3e09cf6a661fe0a6db30f077102b7037988d8
         with:
-            version: 'true'
+            version: true
 
