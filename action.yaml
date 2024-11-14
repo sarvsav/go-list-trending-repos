@@ -10,9 +10,7 @@ runs:
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
   args:
   ## Add an if condition to run the version command if the input is set to true
-  - if: ${{ inputs.version == 'true' }}
-    then:
-      - '--version'
+  - ${{ inputs.version }}
 branding:
   icon: 'wifi'
   color: 'green'
