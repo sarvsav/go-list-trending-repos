@@ -1,0 +1,9 @@
+name: "List Trending Repos"
+author: "Sarvsav"
+description: "List the trending repositories on GitHub"
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
+branding:
+  icon: 'wifi'
+  color: 'green'

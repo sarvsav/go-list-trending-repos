@@ -1,0 +1,12 @@
+name: List trending Go repositories
+on: [push]
+
+jobs:
+  go_list_trending_repos:
+    runs-on: ubuntu-latest
+    name: A job to list the trending golang repositories on GitHub
+    steps:
+      - name: List trending repos daily
+        id: daily
+        uses: sarvsav/go-list-trending-repos@v1
+
