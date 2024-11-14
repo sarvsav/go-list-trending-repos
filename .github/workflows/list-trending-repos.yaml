@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: List trending repos daily
         id: h
-        uses: sarvsav/go-list-trending-repos@v1.0.3
+        uses: sarvsav/go-list-trending-repos@d46a7c388f954bb23af53ab37ea5dd2ef5697b7e
 
