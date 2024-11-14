@@ -3,13 +3,14 @@ author: "Sarvsav"
 description: "List the trending repositories on GitHub"
 inputs:
   version:
-    description: "Use -v or --version, to display version information"
+    description: "set to true to list the version information"
     required: false
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
   args:
-    - ${{ inputs.version }}
+    - ${{ if inputs.version  | toLowerCase == 'true' }}:
+      - '-v'
 branding:
   icon: 'wifi'
   color: 'green'
