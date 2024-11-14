@@ -17,7 +17,8 @@ build: ## Build the list trending repos binary.
 	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build "-ldflags=$$(version/ldflags.bash)" -o go-list-trending-repos .
 
 build-docker: ## Build the docker image
-	export LDFLAGS="$(./version/generate-ldflags.bash)" && docker build --platform=linux/amd64 --build-arg LDFLAGS="$(LDFLAGS)" -t $(IMAGE_NAME) .
+	chmod +x ./version/ldflags-docker.bash
+	export LDFLAGS="$(./version/ldflags-docker.bash)" && docker build --platform=linux/amd64 --build-arg LDFLAGS="$(LDFLAGS)" -t $(IMAGE_NAME) .
 
 ## Help:
 help: ## Show this help.
