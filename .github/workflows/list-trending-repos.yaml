@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to list the trending golang repositories on GitHub
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
       - name: List version information
         id: version
         uses: sarvsav/go-list-trending-repos@main
