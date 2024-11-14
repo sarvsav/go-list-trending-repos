@@ -14,7 +14,8 @@ runs:
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
   args:
     - ${{ inputs.version }}
-    - "-s ${{ inputs.since }}"
+    - "-s"
+    - "${{ inputs.since }}"
 branding:
   icon: 'wifi'
   color: 'green'
