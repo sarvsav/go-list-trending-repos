@@ -1,9 +1,15 @@
 name: "List Trending Repos"
 author: "Sarvsav"
 description: "List the trending repositories on GitHub"
+inputs:
+  version:
+    description: "Use -v or --version, to display version information"
+    required: false
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
+  args:
+    - ${{ inputs.version }}
 branding:
   icon: 'wifi'
   color: 'green'
