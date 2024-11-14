@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: List version information
         id: version
-        uses: sarvsav/go-list-trending-repos@fb06a6d8d8778ef54edb5bf9942d50afc2af42ed
+        uses: sarvsav/go-list-trending-repos@main
         with:
             version: true
 
