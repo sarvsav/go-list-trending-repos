@@ -5,12 +5,18 @@ inputs:
   version:
     description: "set to true to list the version information"
     required: false
+  since:
+    description: "The interval to list the trending repositories"
+    required: false
+    default: "daily"
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
   args:
   ## Add an if condition to run the version command if the input is set to true
   - ${{ inputs.version }}
+  - "-s"
+  - ${{ inputs.since }}
 branding:
   icon: 'wifi'
   color: 'green'
