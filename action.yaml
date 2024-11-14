@@ -13,10 +13,8 @@ runs:
   using: 'docker'
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
   args:
-  ## Add an if condition to run the version command if the input is set to true
-  - ${{ inputs.version }}
-  - "-s"
-  - ${{ inputs.since }}
+    - ${{ inputs.version }}
+    - "-s ${{ inputs.since }}"
 branding:
   icon: 'wifi'
   color: 'green'

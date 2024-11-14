@@ -11,4 +11,8 @@ jobs:
         uses: sarvsav/go-list-trending-repos@main
         with:
             version: -v
-
+      - name: Generate daily report
+        id: daily
+        uses: sarvsav/go-list-trending-repos@main
+        with:
+            since: daily
