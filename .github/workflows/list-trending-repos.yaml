@@ -13,18 +13,23 @@ jobs:
         uses: sarvsav/go-list-trending-repos@main
         with:
             version: -v
-    #   - name: Generate daily report
-    #     id: daily
-    #     uses: sarvsav/go-list-trending-repos@main
-    #     with:
-    #         since: daily
-    #   - name: Generate weekly report
-    #     id: weekly
-    #     uses: sarvsav/go-list-trending-repos@main
-    #     with:
-    #         since: weekly
-    #   - name: Generate complete report
-    #     id: complete
-    #     uses: sarvsav/go-list-trending-repos@main
-    #     with:
-    #         since: all
+      - name: Generate daily report
+        id: daily
+        uses: sarvsav/go-list-trending-repos@main
+        with:
+            since: daily
+      - name: Generate weekly report
+        id: weekly
+        uses: sarvsav/go-list-trending-repos@main
+        with:
+            since: weekly
+      - name: Generate monthly report
+        id: monthly
+        uses: sarvsav/go-list-trending-repos@main
+        with:
+          since: monthly
+      - name: Generate complete report
+        id: complete
+        uses: sarvsav/go-list-trending-repos@main
+        with:
+            since: all
