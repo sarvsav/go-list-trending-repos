@@ -21,7 +21,7 @@ jobs:
       - name: Show results
         id: print
         run: |
-          echo ${{ steps.daily.outputs.data }}
+          echo "Step outputs: ${{ toJson(steps.daily.outputs) }}"
       # - name: Generate weekly report
       #   id: weekly
       #   uses: sarvsav/go-list-trending-repos@main
