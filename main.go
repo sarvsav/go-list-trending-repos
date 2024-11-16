@@ -31,6 +31,8 @@ import (
 
 func main() {
 	if _, err := os.Stat("/.dockerenv"); err == nil {
+		cmd.Execute()
+	} else {
 		spinner := spinix.NewSpinner().
 			SetSpinnerColor("\033[34m").
 			SetMessage("Loading...").
@@ -40,7 +42,5 @@ func main() {
 		spinner.Start()
 		cmd.Execute()
 		spinner.Stop()
-	} else {
-		cmd.Execute()
 	}
 }

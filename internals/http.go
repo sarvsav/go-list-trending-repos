@@ -31,7 +31,7 @@ func makeHTTPRequest(interval string) (filename string) {
 
 	filename = interval + "_" + time.Now().Format("060102_150405") + ".html"
 	// Save the HTML response to a file
-	file, err := os.Create(path.Join("output", filename))
+	file, err := os.Create(path.Join("/output", filename))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -46,7 +46,7 @@ func makeHTTPRequest(interval string) (filename string) {
 }
 
 func convertHTMLToJSON(interval, filename string) error {
-	data, err := os.Open(path.Join("output", filename))
+	data, err := os.Open(path.Join("/output", filename))
 	if err != nil {
 		return err
 	}
@@ -67,7 +67,7 @@ func convertHTMLToJSON(interval, filename string) error {
 	})
 
 	// Save the JSON response to a file
-	jsonFilename := "output/data.json"
+	jsonFilename := "/output/data.json"
 	jsonFile, err := os.OpenFile(jsonFilename, os.O_RDWR|os.O_CREATE, 0755)
 	if err != nil {
 		return err
