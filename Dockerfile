@@ -47,6 +47,9 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
+# Pre-create the /output directory and set permissions
+RUN mkdir -p /output && chown appuser:appuser /output
+
 # Copy the built binary from the build stage.
 COPY --from=build /src/go-list-trending-repos /bin/
 
