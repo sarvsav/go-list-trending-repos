@@ -45,16 +45,16 @@ func makeHTTPRequest(interval string) (filename string) {
 	return filename
 }
 
-func convertHTMLToJSON(interval, filename string) error {
+func convertHTMLToJSON(interval, filename string) (string, error) {
 	data, err := os.Open(path.Join("/output", filename))
 	if err != nil {
-		return err
+		return "", err
 	}
 	defer data.Close()
 
 	doc, err := goquery.NewDocumentFromReader(data)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	// Find all h2 tags with class "h3 lh-condensed"
@@ -70,7 +70,7 @@ func convertHTMLToJSON(interval, filename string) error {
 	jsonFilename := "/output/data.json"
 	jsonFile, err := os.OpenFile(jsonFilename, os.O_RDWR|os.O_CREATE, 0755)
 	if err != nil {
-		return err
+		return "", err
 	}
 	// fmt.Println("Successfully opened data.json")
 	// defer the closing of our jsonFile so that we can parse it later on
@@ -78,7 +78,7 @@ func convertHTMLToJSON(interval, filename string) error {
 
 	byteValue, err := io.ReadAll(jsonFile)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	var payload models.TrendingRepos
@@ -86,7 +86,7 @@ func convertHTMLToJSON(interval, filename string) error {
 	if len(byteValue) != 0 {
 		err = json.Unmarshal(byteValue, &payload)
 		if err != nil {
-			return err
+			return "", err
 		}
 	}
 
@@ -104,16 +104,14 @@ func convertHTMLToJSON(interval, filename string) error {
 
 	jsonData, err := json.Marshal(payload)
 	if err != nil {
-		return err
+		return "", err
 	}
-
-	fmt.Println(string(jsonData))
 
 	// Write the JSON data to a file, preserving formatting
 	err = os.WriteFile(jsonFilename, jsonData, 0644)
 	if err != nil {
-		return err
+		return "", err
 	}
 
-	return nil
+	return string(jsonData), nil
 }
