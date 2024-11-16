@@ -54,7 +54,7 @@ COPY --from=build /src/go-list-trending-repos /bin/
 USER appuser
 
 # Set the default working directory for output files
-WORKDIR /output
+WORKDIR /
 
 # Set the entrypoint to the script
 ENTRYPOINT ["/entrypoint.sh", "/bin/go-list-trending-repos"]
