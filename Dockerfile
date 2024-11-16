@@ -36,26 +36,17 @@ COPY entrypoint.sh /entrypoint.sh
 # Make sure the entrypoint script is executable
 RUN chmod +x /entrypoint.sh
 
-# Create a non-privileged user to run the application.
-ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
+# Pre-create the /output directory and set permissions (no need to create appuser)
+RUN mkdir -p /output && chown runner:runner /output
 
-# Pre-create the /output directory and set permissions
-RUN mkdir -p /output && chown appuser:appuser /output
-RUN mkdir -p /github/file_commands && chown appuser:appuser /github/file_commands
+# Ensure GitHub-specific paths are writable by the default user (runner)
+RUN mkdir -p /github/file_commands && chown runner:runner /github/file_commands
 
 # Copy the built binary from the build stage.
 COPY --from=build /src/go-list-trending-repos /bin/
 
-# Switch to the non-privileged user
-USER appuser
+# Do not specify USER here to use the default GitHub Actions user (usually 'runner')
+# The default user for GitHub-hosted runners is typically 'runner' (or 'gitlab-runner' for GitLab).
 
 # Set the default working directory for output files
 WORKDIR /
