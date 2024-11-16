@@ -24,11 +24,14 @@ func GetTrendingRepos(since string) {
 		fmt.Println(result)
 	case "all":
 		reportFile := makeHTTPRequest("daily")
-		convertHTMLToJSON(since, reportFile)
+		fmt.Println(convertHTMLToJSON(since, reportFile))
 		reportFile = makeHTTPRequest("weekly")
-		convertHTMLToJSON(since, reportFile)
+		fmt.Println(convertHTMLToJSON(since, reportFile))
 		reportFile = makeHTTPRequest("monthly")
-		result, _ := convertHTMLToJSON(since, reportFile)
+		result, err := convertHTMLToJSON(since, reportFile)
+		if err != nil {
+			fmt.Println(err)
+		}
 		fmt.Println(result)
 	default:
 		fmt.Println("Invalid interval:", since)
