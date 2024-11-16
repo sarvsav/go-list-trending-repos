@@ -18,3 +18,8 @@ jobs:
         uses: sarvsav/go-list-trending-repos@main
         with:
             since: daily
+      - name: Generate daily report
+        id: weekly
+        uses: sarvsav/go-list-trending-repos@main
+        with:
+            since: weekly
