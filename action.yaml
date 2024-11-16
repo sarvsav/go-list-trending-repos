@@ -9,6 +9,9 @@ inputs:
     description: "The interval to list the trending repositories"
     required: false
     default: "daily"
+outputs:
+  json_data:
+    description: "The JSON data output from the action"
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/sarvsav/go-list-trending-repos:latest'
