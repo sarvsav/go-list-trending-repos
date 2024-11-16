@@ -24,11 +24,11 @@ func GetTrendingRepos(since string) {
 		fmt.Println(result)
 	case "all":
 		reportFile := makeHTTPRequest("daily")
-		fmt.Println(convertHTMLToJSON(since, reportFile))
+		convertHTMLToJSON("daily", reportFile)
 		reportFile = makeHTTPRequest("weekly")
-		fmt.Println(convertHTMLToJSON(since, reportFile))
+		convertHTMLToJSON("weekly", reportFile)
 		reportFile = makeHTTPRequest("monthly")
-		result, err := convertHTMLToJSON(since, reportFile)
+		result, err := convertHTMLToJSON("monthly", reportFile)
 		if err != nil {
 			fmt.Println(err)
 		}

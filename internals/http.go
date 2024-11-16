@@ -101,7 +101,6 @@ func convertHTMLToJSON(interval, filename string) (string, error) {
 	if interval == "monthly" {
 		payload.Data.Monthly = repos
 	}
-
 	jsonData, err := json.Marshal(payload)
 	if err != nil {
 		return "", err
