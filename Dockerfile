@@ -36,17 +36,11 @@ COPY entrypoint.sh /entrypoint.sh
 # Make sure the entrypoint script is executable
 RUN chmod +x /entrypoint.sh
 
-# Pre-create the /output directory and set permissions (no need to create appuser)
-RUN mkdir -p /output && chown runner:runner /output
-
-# Ensure GitHub-specific paths are writable by the default user (runner)
-RUN mkdir -p /github/file_commands && chown runner:runner /github/file_commands
+# Pre-create the /output directory and set permissions
+RUN mkdir -p /output && chmod 777 /output  # Allow all users to write to /output
 
 # Copy the built binary from the build stage.
 COPY --from=build /src/go-list-trending-repos /bin/
-
-# Do not specify USER here to use the default GitHub Actions user (usually 'runner')
-# The default user for GitHub-hosted runners is typically 'runner' (or 'gitlab-runner' for GitLab).
 
 # Set the default working directory for output files
 WORKDIR /
