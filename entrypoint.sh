@@ -4,6 +4,11 @@
 mkdir -p /output
 chown -R appuser:appuser /output
 
+# Update permission for folder contains GITHUB_OUTPUT file
+if [ -n "$GITHUB_OUTPUT" ]; then
+    chown -R appuser:appuser $(dirname "$GITHUB_OUTPUT")
+fi
+
 # Execute the main application and capture its output
 output=$("$@" 2>&1)
 
