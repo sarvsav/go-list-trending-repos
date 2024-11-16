@@ -1,5 +1,10 @@
 name: List trending Go repositories
-on: [push]
+## Add triggers on pushing to main or manually running the workflow
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   go_list_trending_repos:
