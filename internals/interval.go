@@ -15,7 +15,7 @@ func GetTrendingRepos(since string) {
 		return
 	}
 
-	fmt.Println("Directory created or already exists:", dirPath)
+	//fmt.Println("Directory created or already exists:", dirPath)
 
 	switch since {
 	case "daily", "weekly", "monthly":
