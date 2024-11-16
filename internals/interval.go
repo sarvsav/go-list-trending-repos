@@ -6,7 +6,7 @@ import (
 )
 
 func GetTrendingRepos(since string) {
-	dirPath := "/output"
+	dirPath := "output"
 
 	// Create the directory if it does not exist
 	err := os.MkdirAll(dirPath, os.ModePerm)

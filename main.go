@@ -22,6 +22,7 @@ THE SOFTWARE.
 package main
 
 import (
+	"os"
 	"time"
 
 	"github.com/Kei-K23/spinix"
@@ -29,13 +30,17 @@ import (
 )
 
 func main() {
-	spinner := spinix.NewSpinner().
-		SetSpinnerColor("\033[34m").
-		SetMessage("Loading...").
-		SetMessageColor("\033[36m").
-		SetSpeed(100 * time.Millisecond) // Adjust speed if necessary
+	if _, err := os.Stat("/.dockerenv"); err == nil {
+		spinner := spinix.NewSpinner().
+			SetSpinnerColor("\033[34m").
+			SetMessage("Loading...").
+			SetMessageColor("\033[36m").
+			SetSpeed(100 * time.Millisecond) // Adjust speed if necessary
 
-	spinner.Start()
-	cmd.Execute()
-	spinner.Stop()
+		spinner.Start()
+		cmd.Execute()
+		spinner.Stop()
+	} else {
+		cmd.Execute()
+	}
 }

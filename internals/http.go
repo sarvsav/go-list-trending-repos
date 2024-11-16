@@ -22,7 +22,7 @@ func makeHTTPRequest(interval string) (filename string) {
 	defer client.Body.Close()
 
 	// Print the text and status code
-	fmt.Println(client.Status)
+	// fmt.Println(client.Status)
 
 	body, err := io.ReadAll(client.Body)
 	if err != nil {
@@ -72,7 +72,7 @@ func convertHTMLToJSON(interval, filename string) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println("Successfully opened data.json")
+	// fmt.Println("Successfully opened data.json")
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
 
@@ -106,6 +106,8 @@ func convertHTMLToJSON(interval, filename string) error {
 	if err != nil {
 		return err
 	}
+
+	fmt.Println(string(jsonData))
 
 	// Write the JSON data to a file, preserving formatting
 	err = os.WriteFile(jsonFilename, jsonData, 0644)
